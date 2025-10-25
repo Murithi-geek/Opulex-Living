@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opulex Living - Crafted for the Modern Connoisseur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --almond-beige: #F5E6D3;
+            --dark-beige: #D4C4B0;
+            --accent-green: #6B8E23;
+            --dark-green: #556B2F;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--almond-beige) 0%, #FFF8E7 100%);
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        .top-bar {
+            background: var(--text-dark);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: 3px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            padding: 5px 10px;
+            display: inline-block;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .logo:hover {
+            border-color: var(--accent-green);
+            letter-spacing: 4px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23D4C4B0" width="1200" height="600"/><path fill="%236B8E23" opacity="0.1" d="M0 300 Q300 200 600 300 T1200 300 L1200 600 L0 600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: var(--accent-green);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--almond-beige);
+            border: 2px solid var(--dark-beige);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-controls label {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .sort-controls select {
+            padding: 10px 20px;
+            border: 2px solid var(--dark-beige);
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--dark-beige);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: var(--almond-beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--accent-green);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--accent-green);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .bestseller-badge {
+            background: var(--accent-green);
+            color: white;
+            padding: 5px 10px;
+            font-size: 11px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-green);
+            margin-bottom: 15px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .category-filter {
+                justify-content: center;
+            }
+
+            .sort-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <!-- Empty top bar - clean aesthetic -->
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">OPULEX LIVING</div>
+                <div class="tagline">Crafted for the Modern Connoisseur</div>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Elevate Your Living Space</h1>
+            <p>Discover curated collections of premium home essentials</p>
+            <a href="#products" class="cta-button">Explore Collections</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <h2 class="section-title">Our Collections</h2>
+        <p class="section-subtitle">Handpicked luxury items for every room in your home</p>
+
+        <div class="filter-controls">
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="home">Home Appliances</button>
+                <button class="filter-btn" data-category="kitchen">Kitchen Appliances</button>
+                <button class="filter-btn" data-category="bathroom">Bathroom Appliances</button>
+                <button class="filter-btn" data-category="bedding">Beddings & Bedroom</button>
+                <button class="filter-btn" data-category="dinnersets">Luxury Dinner Sets</button>
+                <button class="filter-btn" data-category="cookware">Cookware</button>
+                <button class="filter-btn" data-category="organizers">Organizers</button>
+                <button class="filter-btn" data-category="decor">Decor</button>
+                <button class="filter-btn" data-category="humidifiers">Humidifiers & Candles</button>
+                <button class="filter-btn" data-category="outdoor">Camping & Outdoor</button>
+            </div>
+
+            <div class="sort-controls">
+                <label for="sort">Sort by:</label>
+                <select id="sort">
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="bestselling">Best Selling</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Opulex Living</h3>
+                <p>Crafted for the Modern Connoisseur</p>
+                <p>Bringing luxury and functionality to your home since 2025</p>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>Contact Us</h3>
+                <p>📍 Magic Business Centre, Wing B. BF06</p>
+                <p>📞 +254719876594</p>
+                <p>✉️ Opulexliving@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <!-- Customer Service section removed as requested -->
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Opulex Living. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data (images from Pexels used as placeholders)
+        const products = [
+            {name: 'Premium Air Purifier', category: 'home', price: 15999, bestseller: true, image: 'https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Smart Coffee Maker', category: 'kitchen', price: 12500, bestseller: true, image: 'https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Luxury Rainfall Shower Head', category: 'bathroom', price: 8900, bestseller: false, image: 'https://images.pexels.com/photos/1571461/pexels-photo-1571461.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Egyptian Cotton Sheet Set', category: 'bedding', price: 9500, bestseller: true, image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Fine Bone China Dinner Set', category: 'dinnersets', price: 22000, bestseller: true, image: 'https://images.pexels.com/photos/1114425/pexels-photo-1114425.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Copper Cookware Set', category: 'cookware', price: 18500, bestseller: false, image: 'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Bamboo Drawer Organizers', category: 'organizers', price: 3500, bestseller: false, image: 'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Marble Sculpture Accent', category: 'decor', price: 7800, bestseller: false, image: 'https://images.pexels.com/photos/2440471/pexels-photo-2440471.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Ultrasonic Humidifier', category: 'humidifiers', price: 6500, bestseller: true, image: 'https://images.pexels.com/photos/342800/pexels-photo-342800.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Portable Camping Stove', category: 'outdoor', price: 5200, bestseller: false, image: 'https://images.pexels.com/photos/4107279/pexels-photo-4107279.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Robotic Vacuum Cleaner', category: 'home', price: 28000, bestseller: true, image: 'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Multi-Function Blender', category: 'kitchen', price: 8900, bestseller: false, image: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Heated Towel Rack', category: 'bathroom', price: 11500, bestseller: false, image: 'https://images.pexels.com/photos/1358912/pexels-photo-1358912.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Memory Foam Pillow Set', category: 'bedding', price: 4500, bestseller: false, image: 'https://images.pexels.com/photos/90317/pexels-photo-90317.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Crystal Wine Glasses', category: 'dinnersets', price: 6800, bestseller: false, image: 'https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Cast Iron Dutch Oven', category: 'cookware', price: 9200, bestseller: true, image: 'https://images.pexels.com/photos/373548/pexels-photo-373548.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Wall Mounted Spice Rack', category: 'organizers', price: 2800, bestseller: false, image: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Bohemian Wall Tapestry', category: 'decor', price: 4200, bestseller: false, image: 'https://images.pexels.com/photos/2440471/pexels-photo-2440471.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Aromatherapy Candle Set', category: 'humidifiers', price: 3200, bestseller: true, image: 'https://images.pexels.com/photos/251808/pexels-photo-251808.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'},
+            {name: 'Insulated Camping Chair', category: 'outdoor', price: 4800, bestseller: false, image: 'https://images.pexels.com/photos/1843655/pexels-photo-1843655.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'}
+        ];
+
+        let currentCategory = 'all';
+        let currentSort = 'alphabetical';
+
+        function displayProducts() {
+            const grid = document.getElementById('productGrid');
+            let filteredProducts = products.filter(p => 
+                currentCategory === 'all' || p.category === currentCategory
+            );
+
+            // Sort products
+            switch(currentSort) {
+                case 'alphabetical':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'bestselling':
+                    filteredProducts.sort((a, b) => b.bestseller - a.bestseller);
+                    break;
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+            }
+
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image"><img src="${product.image}" alt="${product.name}" style="width:100%;height:250px;object-fit:cover;display:block;"></div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">KSh ${product.price.toLocaleString()}</div>
+                        ${product.bestseller ? '<span class="bestseller-badge">BESTSELLER</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Smooth scroll for contact links and any .short-link elements
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href="#contact"], .short-link');
+            if (target) {
+                e.preventDefault();
+                const contactEl = document.querySelector('#contact');
+                if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        // Category filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                displayProducts();
+            });
+        });
+
+        // Sort dropdown
+        document.getElementById('sort').addEventListener('change', function() {
+            currentSort = this.value;
+            displayProducts();
+        });
+
+        // Initial display
+        displayProducts();
+    </script>
+</body>
+</html>
